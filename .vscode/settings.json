@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown",
+        "L2_Sockets.C": "cpp"
+    }
+}
