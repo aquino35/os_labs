@@ -124,7 +124,6 @@ int main() {
 
 #define PORT_NUMBER 44142
 
-
 bool serverShutdown = false;
 
 void shutdownServer(int signal)
