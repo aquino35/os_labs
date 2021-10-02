@@ -228,6 +228,5 @@ void server()
         }
 
     }
-    
     close(sockfd); //Close socket
 }
