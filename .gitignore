@@ -1,0 +1,5 @@
+
+# Prerequisites
+*.d
+.DS_Store
+src/.DS_Store
