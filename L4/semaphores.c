@@ -18,10 +18,11 @@ int buffer [BUFFER_SIZE];
 int in = 0;
 int out = 0;
 
-sem_t empty, full;
-
 pthread_t tid;
 pthread_mutex_t mutexlock;
+
+sem_t empty, full;
+
 
 void insert(int item)
 {
@@ -43,12 +44,11 @@ int remove_item()
    while (count == 0);
    item = buffer[out];
    printf("out: %d removed: %d and count is: %d\n", out, item, count);
-   out = (out + 1 ) %BUFFER_SIZE;
+   out = (out + 1)%BUFFER_SIZE;
    count--;
    pthread_mutex_unlock(&mutexlock);
    sleep(1); 
    return item;
-
 }
 
 
@@ -58,7 +58,7 @@ void * producer(void * param)
    while(1)
    {
       sem_wait(&empty);
-      item = rand() % BUFFER_SIZE ;
+      item = rand()%BUFFER_SIZE ;
       insert(item);
       sem_post(&full);
    }
@@ -78,12 +78,13 @@ void * consumer(void * param){
 
 int main(int argc, char * argv[])
 {
-    int producers = atoi(argv[1]);
-    int consumers =  atoi(argv[2]);
+    // int producers = atoi(argv[1]);
+    // int consumers =  atoi(argv[2]);
+    int producers = 1; /* For testing */
+    int consumers = 2; /* For testing */
     int i;
 
     pthread_mutex_init(&mutexlock, NULL);
-
     sem_init(&full, 0, 0);
     sem_init(&empty, 0, BUFFER_SIZE);
 
