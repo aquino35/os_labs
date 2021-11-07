@@ -1,6 +1,13 @@
 {
     "files.associations": {
         "*.rmd": "markdown",
-        "L2_Sockets.C": "cpp"
+        "L2_Sockets.C": "cpp",
+        "random": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c"
+    },
+    "files.watcherExclude": {
+        "**/target": true
     }
 }

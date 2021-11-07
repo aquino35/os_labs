@@ -27,7 +27,7 @@ sem_t empty, full;
 void insert(int item)
 {
    pthread_mutex_lock(&mutexlock);
-   while (count == BUFFER_SIZE);
+   while (count == BUFFER_SIZE); // wait until it is full
    buffer[in] = item;
    printf("in: %d inserted: %d and count is %d\n", in, item, count);
    in = (in +1) % BUFFER_SIZE;
@@ -41,7 +41,7 @@ int remove_item()
 {
    int item;
    pthread_mutex_lock(&mutexlock);
-   while (count == 0);
+   while (count == 0); // wait until it is empty
    item = buffer[out];
    printf("out: %d removed: %d and count is: %d\n", out, item, count);
    out = (out + 1)%BUFFER_SIZE;
@@ -78,10 +78,10 @@ void * consumer(void * param){
 
 int main(int argc, char * argv[])
 {
-    // int producers = atoi(argv[1]);
-    // int consumers =  atoi(argv[2]);
-    int producers = 1; /* For testing */
-    int consumers = 2; /* For testing */
+    int producers = atoi(argv[1]);
+    int consumers =  atoi(argv[2]);
+   //  int producers = 1; /* For testing */
+   //  int consumers = 2; /* For testing */
     int i;
 
     pthread_mutex_init(&mutexlock, NULL);
