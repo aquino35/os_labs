@@ -1,5 +1,7 @@
 
 # Prerequisites
+.vscode
+.metals
 *.d
 .DS_Store
 src/.DS_Store
